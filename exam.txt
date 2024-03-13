@@ -1,0 +1,147 @@
+1) simple jog 
+
+->  +
+-> job name -> select free style project
+-> description -> give anything
+-> go down -> build steps -> windows batch command 
+-> echo "Hello world" (for hello world pgrm) / java --version (to show java version)
+-> build now
+-> select that build
+-> console output -> youll get here 
+
+2)parameter job
+-> create a job
+-> select this project is parameterized
+-> add 4 parameter
+-> goto build setup
+-> windows batch -> 4 echo commands like echo %name% echo %password% echo %Browser% echo %Boolean%
+-> apply save
+->select build with parameter -> give name -> password -> create in console output youll see
+
+3)gitpoll
+-> create a job
+->in source code management select git
+->add git repo url
+->branch name main
+->select poll scm and add 5 * with space
+->if needed add echo in build 
+->apply save
+->build now
+->see in console output
+-> make change in ur git repo like addig a file tyhe automatically a build will occur in jenkin and the see that in console output changes found
+
+4) upstream and downstream without pipeline
+(manage jenkins -> plugins -> build pipeline plugins install)
+-> create 3 job Build,test,deploy
+-> goto buid -> configure -> go down -> post build actions -> add other projects -> select test
+-> goto test do same and select deploy for test
+-> dashboard -> create view -> view name -> select build pipeline view -> create -> select initial job -> select build
+-> number of display -> 3 -> apply -> ok
+-> screen will come
+-> goto build and run and then goto created pipeline and check 3 box will appear
+
+5)upstream and dwn without git
+->
+
+7)ngrock
+-> create  a job ->source code management ->git
+->add git repo url ->add branch -> poll scm
+-> goto git ->settings -> webhooks ->add webhooks
+
+->goto ngrok website -> copy the url/token and open ngrok console and paste the token/link and run
+->ngrok.exe http 8080
+-> copy the forwarding link and paste in payload url in webhooks page
+->/github-webhook/
+->add webhook
+-> goto console and click the forwarding link and select visit site and then give username and password of the jenkins.
+
+
+*********************************GIT***************************************
+1)Mergetool
+a)local(folder)
+b)remote(branch)
+->git init
+->git remote add origin "path"
+->git pull origin main
+->git branch -m main
+->git branch b1->git branch b2
+->git checkout b1
+->cat >> f1.txt->hiiii
+->git add . -> git commit -m"msg"
+->git checkout b2
+-> cat >> f1.txt -> kjddsgdfhsgj
+->git add .
+->git commit -m "msg"
+->git checkout main
+->git merge b1
+->git merge b2 (conflict will occur)
+->git mergetool
+-> window will open -> do some changes -> esc :wq 3 times -> git checkout main
+-> git merge b2 -> solved
+
+2)SSH Key
+->eval $(ssh-agent -s)
+->ssh-keygen -t rsa -b 4096 -C "charanpatgar19@gmail.com"
+->cat /path upto pub
+->copy the key and paste in github
+->ssh-add ~/.ssh/id_rsa
+->ssh-add -l
+->ssh -T git@github.com
+
+**********************************************************************
+DOCKER
+
+*creating hello world 
+->docker pull hello-world
+->docker images
+->docker run hello-world
+->docker ps -a
+->docker rm container id
+->docker rmi image id
+
+*creating ubuntu
+->docker pull ubuntu
+->docker images
+->docker run ubuntu
+->docker ps -a
+->docker ps -a
+->docker run -it ubuntu bash
+->ubuntu commands
+->docker exit
+->docker stop container id
+->docker rmi container id
+->docker rm imageid
+
+*create image and push to repo
+->docker pull hello-world
+->docker images
+->docker run hello-world
+->docker ps -a
+->open docker hub
+->make repository
+->copy repo name
+->docker tag hello-world:latest charanpatgar/prak:01
+->docker push repo
+->check in repo
+->docker rmi charanpatgar/prak:01
+->dokcer pull charanpatgar/prak:01
+->docker images (itll be there)
+
+*create docker file
+->open cmd
+->create directory->cd directory
+->cat>Dockerfile
+->write code in Dockerfile
+->go to cmd
+->docker build -t dkk(newname):02(newname) .
+->docker run dkk(newname):02(newname) 
+->docker images
+->docker tag dkk(newname):02(newname) charanpatgar/prak:03(newname)
+->docker push charanpatgar/prak:03(same above)
+->check in repo 
+->docker images
+->docker rmi charanpatgar/prak:03
+->docker images
+->docker pull charanpatgar/prak:03
+->docker images
+
