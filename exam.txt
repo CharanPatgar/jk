@@ -41,7 +41,52 @@
 -> goto build and run and then goto created pipeline and check 3 box will appear
 
 5)upstream and dwn without git
-->
+->build a job and select pipeline 
+-> select pipeline definition as pipeline script
+->sample program hello world and alter the code like:
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+    }
+    post{
+        always{
+            
+        }
+    }
+}
+->goto pipeline syntax
+->sample text ->select extende email
+->givr to your mail and subject and body and then select generate pipeline script
+->copy that and the pastet in always{}
+->apply and save
+->then build now
+->youll get 3 boxes
+
+Pipeline with git :
+
+->the code you copied the above code open your repo and create a Jenkinsfile and paste it there
+->create a job and do same process untill pipeline script you choose ppipeline script from scm
+->here you select git and add your repo link 
+->branch main
+->apply and save
+->build now
+->youll get 3 boxes here only
 
 7)ngrock
 -> create  a job ->source code management ->git
